@@ -23,7 +23,7 @@ android {
             initWith(getByName("release"))
         }
     }
-    namespace = "io.github.fate_grand_automata.prefs"
+    namespace = "io.github.fate_grand_critomata.prefs"
 }
 
 dependencies {

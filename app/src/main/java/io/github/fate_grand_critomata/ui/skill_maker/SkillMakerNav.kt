@@ -1,0 +1,17 @@
+package io.github.fate_grand_critomata.ui.skill_maker
+
+import io.github.fate_grand_critomata.scripts.models.ServantTarget
+import io.github.fate_grand_critomata.scripts.models.Skill
+
+sealed class SkillMakerNav {
+    data object Main : SkillMakerNav()
+    data object MasterSkills : SkillMakerNav()
+    data object Atk : SkillMakerNav()
+    data object OrderChange : SkillMakerNav()
+    data class SkillTarget(val skill: Skill) : SkillMakerNav()
+    data class ChangeNpType2(val skill: Skill) : SkillMakerNav()
+    data class ChangeNpType3(val skill: Skill) : SkillMakerNav()
+    data class Choice2(val skill: Skill, val slot: SkillSlot) : SkillMakerNav()
+    data class Choice2Target(val skill: Skill, val firstTarget: ServantTarget) : SkillMakerNav()
+    data class Choice3(val skill: Skill, val slot: SkillSlot) : SkillMakerNav()
+}

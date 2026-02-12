@@ -39,7 +39,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "io.github.fate_grand_automata"
+        applicationId = "io.github.fate_grand_critomata"
         minSdk = 24
         targetSdk = 35
         versionCode = System.getenv("FGA_VERSION_CODE")?.toInt() ?: 1
@@ -87,7 +87,7 @@ android {
     lint {
         abortOnError = false
     }
-    namespace = "io.github.fate_grand_automata"
+    namespace = "io.github.fate_grand_critomata"
 }
 
 dependencies {

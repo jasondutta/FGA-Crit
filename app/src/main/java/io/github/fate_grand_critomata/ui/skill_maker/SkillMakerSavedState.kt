@@ -1,0 +1,14 @@
+package io.github.fate_grand_critomata.ui.skill_maker
+
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class SkillMakerSavedState(
+    val skillString: String? = null,
+    val enemyTarget: Int? = null,
+    val wave: Int = 1,
+    val turn: Int = 1,
+    val currentSkill: Char = '0',
+    val currentIndex: Int = 0
+) : Parcelable
