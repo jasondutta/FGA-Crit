@@ -73,24 +73,40 @@ class Battle @Inject constructor(
         if (battleConfig.addRaidTurnDelay){
             battleConfig.raidTurnDelaySeconds.seconds.wait()
         }
-
+        println("Begin turn")
+        println("state.turn = " + state.turn)
         servantTracker.beginTurn()
+        println("Turn began")
+        println("state.turn = " + state.turn)
 
         // ---- CARD GATE START ----
         if (battleConfig.cardGateEnabled && state.turn == 0) {
 
             // Tell ServantTracker to update card info
+            println("Reading command cards")
+            card.readCommandCards()
+            println("Reading command cards - Done")
+            println("readCommandCards = " + card.readCommandCards())
+            println("getting faceCardsByServant")
             val faceCardsByServant = servantTracker.faceCardsGroupedByServant()
+            println("getting faceCardsByServant - Done")
+            println("faceCardsByServant = " + faceCardsByServant)
+            println("getting countForPreferred")
             val countForPreferred = faceCardsByServant[battleConfig.cardGateServant]?.size ?: 0
-
+            println("getting countForPreferred - Done")
+            println("countForPreferred = " + countForPreferred)
+            println("beginning if gate")
             if (countForPreferred < battleConfig.cardGateMinimum) {
-
+                println("inside if gate")
+                println("countForPreferred = " + countForPreferred)
+                println("battleConfig.cardGateMinimum = " + battleConfig.cardGateMinimum)
+                println("beginning attack buttons")
                 // Read cards (attack button)
                 val cards = clickAttack()
-
+                println("clickAttack started")
                 // Tap random cards
                 card.clickCommandCards(cards.shuffled().take(3), NPUsage.none)
-
+                println("random buttons pressed")
                 0.5.seconds.wait()
                 return
             }
